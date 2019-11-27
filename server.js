@@ -18,7 +18,9 @@ app.use(
   })
 );
 app.use(bodyParser.json());// DB Config
-
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 mongoose.connect(db,{ useNewUrlParser: true }).then(
     () => console.log("MongoDB successfully connected")
   ).catch(err => console.log(err));// Passport middleware
